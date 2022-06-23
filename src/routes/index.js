@@ -1,5 +1,6 @@
 const express = require('express');
-const planRouter = require('./planRouter')
+const planRouter = require('./planRouter');
+const mealRouter = require('./mealRouter');
 
 module.exports = app => {
     app.use(function (req, res, next) {
@@ -14,4 +15,5 @@ module.exports = app => {
     app.get('/', (req, res) => res.send('Physical Evaluation Microservice'));
 
     app.use(planRouter);
+    app.use(mealRouter);
 }

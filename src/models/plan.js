@@ -15,7 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       });
       Plan.belongsTo(models.Professionals, {
         foreignKey: 'professional_id'
-      })
+      });
+      Plan.hasMany(models.Foods, {
+        foreignKey: 'plan_id'
+      });
     }
   }
   Plan.init({
