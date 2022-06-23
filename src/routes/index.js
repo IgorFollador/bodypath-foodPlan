@@ -1,4 +1,5 @@
-const bodyParser = require('body-parser');
+const express = require('express');
+const planRouter = require('./planRouter')
 
 module.exports = app => {
     app.use(function (req, res, next) {
@@ -8,7 +9,9 @@ module.exports = app => {
         next();
     });
 
-    app.use(bodyParser.json());
+    app.use(express.json());
     
     app.get('/', (req, res) => res.send('Physical Evaluation Microservice'));
+
+    app.use(planRouter);
 }
