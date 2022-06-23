@@ -2,6 +2,27 @@ const database = require('../models');
 
 class PlanController {
 
+static async readPlanById(req, res) {
+    const { id } = req.params;
+
+    try {
+        const plan = await database.Plans.findByPk(id, {
+            include: {
+                model: database.Clients,
+                include: {
+                    model: database.Users,
+                    attributes: ['firstName', 'lastName']
+                },
+                attributes: {exclude: ['id', 'professional_id', 'createdAt', 'updatedAt']}
+            },
+        })
+
+        return res.status(200).json(plan);
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+}
+
 static async readAllPlansByProfessionalId(req, res) {
     const { id } = req.params;
     
@@ -21,7 +42,6 @@ static async readAllPlansByProfessionalId(req, res) {
         });
         return res.status(200).json(allPlans);
     } catch (error) {
-        console.log(error);
         return res.status(500).json({ message: error.message });
     }
 }

@@ -4,7 +4,8 @@ const PlanController = require('../controllers/PlanController.js');
 const router = Router();
 
 // router.get('/plans', PlanController.readAllPlans);
-// router.get('/plans/:id', PlanController.readPlan);
+router.get('/plans/:id', PlanController.readPlanById);
+
 router.get('/plans/professional/:id', PlanController.readAllPlansByProfessionalId); 
 router.get('/plans/professional/:id/names', PlanController.readAllPlansNamesByProfessionalId);
 
