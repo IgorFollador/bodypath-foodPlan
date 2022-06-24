@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       Client.belongsTo(models.Professionals, {
         foreignKey: 'professional_id'
       });
-      Client.hasMany(models.Plans, {
+      Client.hasMany(models.Foodplans, {
         foreignKey: 'client_id',
         onDelete: 'CASCADE'
       })

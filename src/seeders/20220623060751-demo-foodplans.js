@@ -2,7 +2,7 @@
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('plans', [
+    await queryInterface.bulkInsert('foodplans', [
       {
         bmr: 1840,
         calor_variation: 800,
@@ -40,6 +40,6 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('plans', null, {});
+    await queryInterface.bulkDelete('foodplans', null, {});
   }
 };

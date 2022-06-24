@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Food', {
+    await queryInterface.createTable('Foods', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -27,10 +27,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         // References TACO API
       },
-      plan_id: {
+      foodPlan_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { model: 'Plans', key: 'id' }
+        references: { model: 'Foodplans', key: 'id' }
       },
       meal_id: {
         allowNull: false,
@@ -48,6 +48,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Food');
+    await queryInterface.dropTable('Foods');
   }
 };

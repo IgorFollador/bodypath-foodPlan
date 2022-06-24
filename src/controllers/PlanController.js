@@ -6,7 +6,7 @@ static async readPlanById(req, res) {
     const { id } = req.params;
 
     try {
-        const plan = await database.Plans.findByPk(id, {
+        const plan = await database.Foodplans.findByPk(id, {
             include: {
                 model: database.Clients,
                 include: {
@@ -27,7 +27,7 @@ static async readAllPlansByProfessionalId(req, res) {
     const { id } = req.params;
     
     try {
-        const allPlans = await database.Plans.findAll({
+        const allPlans = await database.Foodplans.findAll({
             include: {
                 model: database.Clients,
                 include: {
@@ -49,7 +49,7 @@ static async readAllPlansByProfessionalId(req, res) {
 static async readAllPlansNamesByProfessionalId(req, res) {
     const { id } = req.params;
     try {
-        const allPlans = await database.Plans.findAll({
+        const allPlans = await database.Foodplans.findAll({
             include: {
                 model: database.Clients,
                 include: {
@@ -78,7 +78,7 @@ static async createPlan(req, res) {
     if(professional === null) return res.status(404).json({ message: 'Professional not found'})
 
     try {
-        const plan = await database.Plans.create(formPlan);
+        const plan = await database.Foodplans.create(formPlan);
         return res.status(201).json(plan);
     } catch (error) {
         console.log(error);
@@ -90,10 +90,10 @@ static async updatePlan(req, res) {
     const { id } = req.params;
     const formPlan = req.body;
     try {
-        const plan = await database.Plans.findByPk(id);
+        const plan = await database.Foodplans.findByPk(id);
         if(plan === null) return res.status(404).json({ message: 'Plan not found' });
         
-        await database.Plans.update(formPlan, {
+        await database.Foodplans.update(formPlan, {
             where: {
                 id: Number(id)
             }
@@ -108,10 +108,10 @@ static async deletePlan(req, res) {
     const { id } = req.params;
     
     try {
-        const plan = await database.Plans.findByPk(id);
+        const plan = await database.Foodplans.findByPk(id);
         if(plan === null) return res.status(404).json({ message: 'Plan not found'})
 
-        await database.Plans.destroy({
+        await database.Foodplans.destroy({
             where: {
                 id: Number(id)
             }
