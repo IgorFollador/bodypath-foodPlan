@@ -23,6 +23,9 @@ module.exports = {
       lipid: {
         type: Sequelize.DOUBLE
       },
+      kcal: {
+        type: Sequelize.DOUBLE
+      },
       nutriment_id: { 
         type: Sequelize.INTEGER,
         // References TACO API

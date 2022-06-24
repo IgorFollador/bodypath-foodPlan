@@ -7,6 +7,10 @@ class FoodController {
 
         try {
             const allFoods = await database.Foods.findAll({
+                include: {
+                    model: database.Meals,
+                    attributes: ['descr_meal'],
+                },
                 where: {
                     foodPlan_id: id
                 }
