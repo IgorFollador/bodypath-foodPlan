@@ -5,6 +5,7 @@ module.exports = {
     await queryInterface.bulkInsert('foodplans', [
       {
         bmr: 1840,
+        body_mass: 57,
         calor_variation: 800,
         carbohydrate: 1,
         protein: 2,
@@ -16,6 +17,7 @@ module.exports = {
       },
       {
         bmr: 2028,
+        body_mass: 60,
         calor_variation: 500,
         carbohydrate: 1,
         protein: 2,
@@ -27,6 +29,7 @@ module.exports = {
       },
       {
         bmr: 1391,
+        body_mass: 55,
         calor_variation: 800,
         carbohydrate: 1,
         protein: 2,

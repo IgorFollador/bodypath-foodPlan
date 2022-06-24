@@ -11,7 +11,7 @@ module.exports = {
       bmr: {
         type: Sequelize.DOUBLE
       },
-      weight: {
+      body_mass: {
         type: Sequelize.DOUBLE
       },
       calor_variation: {

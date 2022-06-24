@@ -1,6 +1,7 @@
 const express = require('express');
 const planRouter = require('./planRouter');
 const mealRouter = require('./mealRouter');
+const foodRouter = require('./foodRouter');
 
 module.exports = app => {
     app.use(function (req, res, next) {
@@ -16,4 +17,5 @@ module.exports = app => {
 
     app.use(planRouter);
     app.use(mealRouter);
+    app.use(foodRouter);
 }

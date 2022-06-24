@@ -17,7 +17,18 @@ static async readPlanById(req, res) {
             },
         })
 
-        return res.status(200).json(plan);
+        const allFoods = await database.Foods.findAll({
+            where: {
+                foodPlan_id: id
+            }
+        })
+
+        const foodPlan = {
+            Plan: plan,
+            Foods: allFoods
+        }
+
+        return res.status(200).json(foodPlan);
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
@@ -81,7 +92,6 @@ static async createPlan(req, res) {
         const plan = await database.Foodplans.create(formPlan);
         return res.status(201).json(plan);
     } catch (error) {
-        console.log(error);
         return res.status(500).json({ message: error.message });
     }
 }
@@ -110,6 +120,20 @@ static async deletePlan(req, res) {
     try {
         const plan = await database.Foodplans.findByPk(id);
         if(plan === null) return res.status(404).json({ message: 'Plan not found'})
+
+        const allFoods = await database.Foods.findAll({
+            where: {
+                foodPlan_id: id
+            }
+        })
+
+        allFoods.forEach(async food => {
+            await database.Foods.destroy({
+                where: {
+                    id: Number(food.id)
+                }
+            })
+        });
 
         await database.Foodplans.destroy({
             where: {

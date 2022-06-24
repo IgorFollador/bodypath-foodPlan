@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Foodplan.init({
     bmr: DataTypes.DOUBLE,
-    weight: DataTypes.DOUBLE,
+    body_mass: DataTypes.DOUBLE,
     calor_variation: DataTypes.DOUBLE,
     carbohydrate: DataTypes.INTEGER,
     protein: DataTypes.INTEGER,
