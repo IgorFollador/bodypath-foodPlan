@@ -24,7 +24,8 @@ module.exports = (sequelize, DataTypes) => {
     descr_nutirment: DataTypes.STRING,
     carbohydrate: DataTypes.DOUBLE,
     protein: DataTypes.DOUBLE,
-    lipid: DataTypes.DOUBLE
+    lipid: DataTypes.DOUBLE,
+    kcal: DataTypes.DOUBLE
   }, {
     sequelize,
     modelName: 'Foods',
